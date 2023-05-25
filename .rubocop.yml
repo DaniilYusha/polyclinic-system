@@ -1,0 +1,24 @@
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'bin/bundle'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'bin/bundle'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/LineLength:
+  Exclude:
+    - 'bin/bundle'
