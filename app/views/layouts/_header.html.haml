@@ -1,0 +1,7 @@
+%body
+  %header.p-3.bg-dark.text-white
+    .container
+      - if current_doctor
+        = render 'layouts/partials/doctor_header'
+      - elsif current_patient
+        = render 'layouts/partials/patient_header'

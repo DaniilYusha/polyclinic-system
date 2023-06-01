@@ -1,0 +1,14 @@
+%h1= t('.appointments')
+%table.table.table-striped
+  %thead
+    %th= t('.doctor')
+    %th= t('.datetime')
+    %th= t('.status')
+    %th= t('.recommendation')
+  %tbody
+    - @appointments.each do |appointment|
+      %tr
+        %td= appointment.doctor.decorate.full_name
+        %td= appointment.datetime
+        %td= appointment.status
+        %td= appointment&.recommendation&.content

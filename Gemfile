@@ -12,6 +12,7 @@ gem 'carrierwave', '~> 2.2', '>= 2.2.3'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'draper', '~> 4.0', '>= 4.0.2'
 gem 'fog-aws', '~> 3.19'
+gem 'haml-rails', '~> 2.1'
 gem 'importmap-rails', '~> 1.1', '>= 1.1.6'
 gem 'mini_magick', '~> 4.12'
 gem 'pg', '~> 1.1'
@@ -37,6 +38,8 @@ end
 group :development do
   gem 'brakeman', '~> 6.0'
   gem 'bullet', '~> 7.0', '>= 7.0.7'
+  gem 'dockerfile-rails', '>= 1.4'
+  gem 'html2haml', '~> 2.3'
 end
 
 group :test do

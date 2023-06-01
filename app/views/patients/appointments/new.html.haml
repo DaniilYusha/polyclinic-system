@@ -1,0 +1,10 @@
+%h1= t('.make_appointment')
+= form_with model: @appointment, data: { turbo: false } do |form|
+  = render 'shared/form_errors', resource: @appointment
+  .mb-3
+    %label.form-label{for: 'appointment_datetime'}= t('.pick_datetime')
+    = form.datetime_field :datetime, class: 'form-control', required: true
+  .mb-3
+    %label.form-label{for: 'appointment_doctor_id'}= t('.choose_doctor')
+    = form.select :doctor_id, @doctors&.map { |doctor| [doctor.full_name, doctor.id] }, { include_blank: true, selected: params[:doctor_id] }, class: 'form-control', required: true
+  = form.submit class: 'btn btn-primary'

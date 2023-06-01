@@ -1,0 +1,35 @@
+%h2= "#{t('.edit')} #{resource_name.to_s.humanize}"
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  .mb-3
+    = f.label :phone, class: 'form-label'
+    %br/
+    = f.text_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control'
+  .fimb-3eld
+    = f.label :password, class: 'form-label'
+    %i
+      (#{t('.leave_blank_password')})
+    %br/
+    = f.password_field :password, autocomplete: 'new-password', class: 'form-control'
+    - if @minimum_password_length
+      %br/
+      %em
+        = @minimum_password_length
+        = t('.characters_minimum')
+  .mb-3
+    = f.label :password_confirmation, class: 'form-label'
+    %br/
+    = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'
+  .mb-3
+    = f.label :current_password, class: 'form-label'
+    %i
+      (#{t('.confirm_changes')})
+    %br/
+    = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control'
+  .actions
+    = f.submit 'Update', class: 'btn btn-primary'
+%h3= t('.cancel_account')
+%div
+  = t('.unhappy')
+  = button_to t('.cancel_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete, class: 'btn btn-danger'
+= link_to t('.back'), :back
