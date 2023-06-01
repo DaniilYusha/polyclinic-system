@@ -1,0 +1,39 @@
+<h2><%= "#{t('.edit')} #{resource_name.to_s.humanize}" %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="mb-3">
+    <%= f.label :phone, class: 'form-label' %><br />
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: 'form-control' %>
+  </div>
+
+  <div class="fimb-3eld">
+    <%= f.label :password, class: 'form-label' %> <i>(<%= t('.leave_blank_password') %>)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> <%= t('.characters_minimum') %></em>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password_confirmation, class: 'form-label' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :current_password, class: 'form-label' %> <i>(<%= t('.confirm_changes') %>)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<h3><%= t('.cancel_account') %></h3>
+
+<div><%= t('.unhappy') %> <%= button_to t('.cancel_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete, class: 'btn btn-danger' %></div>
+
+<%= link_to t('.back'), :back %>

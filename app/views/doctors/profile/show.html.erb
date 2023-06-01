@@ -1,0 +1,7 @@
+<div class="d-flex flex-column align-items-center pt-5">
+  <h1><%= t('.doctor_card') %></h1>
+  <p><%= image_tag(@current_doctor.avatar.thumb.url) if @current_doctor.avatar? %></p>
+  <p class="fw-bold"><%= t('.category') %> <span class="fw-normal"><%= @current_doctor.category.title %></span></p>
+  <p class="fw-bold"><%= t('.full_name') %> <span class="fw-normal"><%= @current_doctor.full_name %></span></p>
+  <p class="fw-bold"><%= t('.phone_number') %> <span class="fw-normal"><%= @current_doctor.phone %></span></p>
+</div>

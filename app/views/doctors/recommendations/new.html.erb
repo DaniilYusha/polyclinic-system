@@ -1,0 +1,12 @@
+<h1><%= t('.leave_recommendation') %></h1>
+
+<%= form_with model: [:appointment, @recommendation], data: { turbo: false } do |form| %>
+  <%= render 'shared/form_errors', resource: @recommendation %>
+
+  <div class="mb-3">
+    <label for="recommendation_content" class="form-label"><%= t('.write_recommendation_content') %></label>
+    <%= form.text_field :content, class: 'form-control', required: true %>
+  </div>
+  
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>

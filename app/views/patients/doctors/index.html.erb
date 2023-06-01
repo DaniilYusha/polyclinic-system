@@ -1,0 +1,21 @@
+<h1><%= t('.doctors_list') %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <th><%= t('.photo') %></th>
+    <th><%= t('.category') %></th>
+    <th><%= t('.full_name') %></th>
+    <th><%= t('.make_appointment') %></th>
+  </thead>
+
+  <tbody>
+    <%- @doctors.each do |doctor| %>
+      <tr>
+        <td><%= image_tag(doctor.avatar.thumb.url) if doctor.avatar? %></td>
+        <td><%= doctor.category.title %></td>
+        <td><%= doctor.full_name %></td>
+        <td><%= link_to(t('.make_appointment'), new_appointment_path(doctor_id: doctor.id)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

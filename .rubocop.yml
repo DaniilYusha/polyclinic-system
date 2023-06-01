@@ -1,4 +1,14 @@
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
   NewCops: enable
 
 Style/Documentation:
@@ -7,18 +17,23 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Metrics/CyclomaticComplexity:
-  Exclude:
-    - 'bin/bundle'
-
-Metrics/MethodLength:
-  Exclude:
-    - 'bin/bundle'
-
-Metrics/PerceivedComplexity:
-  Exclude:
-    - 'bin/bundle'
-
 Layout/LineLength:
   Exclude:
-    - 'bin/bundle'
+    - config/initializers/devise.rb
+  Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Metrics/BlockLength:
+  Exclude:
+    - app/admin/*.rb
+    - config/environments/*.rb
+    - config/routes.rb
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/patients/registrations_controller.rb

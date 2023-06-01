@@ -1,0 +1,9 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <% if current_doctor %>
+      <%= render 'layouts/partials/doctor_header' %>
+    <% elsif current_patient %>
+      <%= render 'layouts/partials/patient_header' %>
+    <% end %>
+  </div>
+</header>

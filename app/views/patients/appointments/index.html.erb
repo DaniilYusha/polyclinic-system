@@ -1,0 +1,21 @@
+<h1><%= t('.appointments') %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <th><%= t('.doctor') %></th>
+    <th><%= t('.datetime') %></th>
+    <th><%= t('.status') %></th>
+    <th><%= t('.recommendation') %></th>
+  </thead>
+
+  <tbody>
+    <%- @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.doctor.decorate.full_name %></td>
+        <td><%= appointment.datetime %></td>
+        <td><%= appointment.status %></td>
+        <td><%= appointment&.recommendation&.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

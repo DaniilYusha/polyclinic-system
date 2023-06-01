@@ -37,6 +37,7 @@ end
 group :development do
   gem 'brakeman', '~> 6.0'
   gem 'bullet', '~> 7.0', '>= 7.0.7'
+  gem 'dockerfile-rails', '>= 1.4'
 end
 
 group :test do
