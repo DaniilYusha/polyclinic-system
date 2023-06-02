@@ -7,12 +7,34 @@ jobs:
   lintering:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-    - name: Bundle install
-      run: bundle install
-    - name: Run rubocop
-      run: bundle exec rubocop
-    - name: Run brakeman
-      run: bundle exec brakeman
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Bundle install
+        run: bundle install
+      - name: Run rubocop
+        run: bundle exec rubocop
+      - name: Run brakeman
+        run: bundle exec brakeman
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11.6
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+      - name: Install PostgreSQL
+        run: sudo apt-get -yqq install libpq-dev
+      - name: Run bundle install
+        run: bundle install
+      - name: Setup Database
+        env:
+          RAILS_ENV: test
+        run: bin/rails db:setup
+      - name: Build and test with rspec
+        env:
+          RAILS_ENV: test
+        run: bundle exec rspec spec
