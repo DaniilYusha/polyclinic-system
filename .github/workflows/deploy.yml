@@ -27,7 +27,7 @@ jobs:
         image: postgres:12.7
         env:
           POSTGRES_USER: ""
-          POSTGRES_DB: policlinic_test
+          POSTGRES_DB: policlinic_system_test
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
 
