@@ -26,7 +26,7 @@ jobs:
       postgres:
         image: postgres:12.7
         env:
-          POSTGRES_USER: policlinic
+          POSTGRES_USER: ""
           POSTGRES_DB: policlinic_test
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
@@ -53,7 +53,6 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: policlinic
         run: |
           bin/rails db:setup
 
