@@ -16,11 +16,11 @@ jobs:
 
       - name: Run linters
         run: |
-          bin/rubocop --parallel
+          bin/rails rubocop --parallel
 
       - name: Run security checks
         run: |
-          bin/brakeman -q -w2
+          bin/rails brakeman -q -w2
 
   tests:
     name: Tests
