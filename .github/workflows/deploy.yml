@@ -3,24 +3,21 @@ on: [push]
 
 jobs:
   linters:
-    name: Linters
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup Ruby and install gems
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
 
-      - name: Run linters
-        run: |
-          bin/rails rubocop
+      - name: Bundle install
+        run: bundle install
 
-      - name: Run security checks
-        run: |
-          bin/rails brakeman -q -w2
+      - name: Run rubocop
+        run: bundle exec rubocop
+
+      - name: Run brakeman
+        run: bundle exec brakeman
 
   tests:
     name: Tests
