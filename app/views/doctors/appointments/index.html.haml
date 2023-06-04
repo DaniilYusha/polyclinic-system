@@ -1,0 +1,18 @@
+%h1= t('.appointments')
+%table.table.table-striped
+  %thead
+    %th= t('.patient')
+    %th= t('.datetime')
+    %th= t('.status')
+    %th= t('.recommendation')
+  %tbody
+    - @appointments.each do |appointment|
+      %tr
+        %td= appointment.patient.decorate.full_name
+        %td= appointment.datetime
+        %td= appointment.status
+        %td
+          - if appointment.recommendation
+            = appointment.recommendation.content
+          - else
+            = link_to t('.leave_recommendation'), new_appointment_recommendation_path(appointment), class: 'btn btn-primary'

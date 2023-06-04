@@ -1,0 +1,14 @@
+%h1= t('.doctors_list')
+%table.table.table-striped
+  %thead
+    %th= t('.photo')
+    %th= t('.category')
+    %th= t('.full_name')
+    %th= t('.make_appointment')
+  %tbody
+    - @doctors.each do |doctor|
+      %tr
+        %td= image_tag(doctor.avatar.thumb.url) if doctor.avatar?
+        %td= doctor.category.title
+        %td= doctor.full_name
+        %td= link_to(t('.make_appointment'), new_appointment_path(doctor_id: doctor.id))

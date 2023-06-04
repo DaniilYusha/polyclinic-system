@@ -1,0 +1,5 @@
+- flash.each do |key, value|
+  - if key == 'notice'
+    .alert.alert-primary= value
+  - elsif key == 'alert'
+    .alert.alert-danger= value

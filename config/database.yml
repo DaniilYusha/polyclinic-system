@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: policlinic_system_production
-  username: policlinic_system
-  password: <%= ENV["POLICLINIC_SYSTEM_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: policlinic_system_production
+  # username: policlinic_system
+  # password: <%= ENV["POLICLINIC_SYSTEM_DATABASE_PASSWORD"] %>
